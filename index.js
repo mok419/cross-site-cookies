@@ -1,7 +1,7 @@
 var cors = require('cors')
 const app = require("express")()
 
-var allowlist = ['https://express-cross-site-cookie.onrender.com', 'https://mok419.github.io']
+var allowlist = ['https://express-cross-site-cookie.onrender.com', 'https://mok419.github.io', 'http://localhost:3000']
 var corsOptionsDelegate = function (req, callback) {
   var corsOptions;
   if (allowlist.indexOf(req.header('Origin')) !== -1) {
@@ -25,7 +25,7 @@ app.post("/", (req,res) =>{
 app.post("/login", (req, res) => {
     //const cookie = "user=hussein; samesite=strict; secure";
     //const cookie = "user=hussein; samesite=lax; secure";
-    const cookie = "user=hussein; samesite=none; secure";
+    const cookie = "user=hussein; domain=https://express-cross-site-cookie.onrender.com; samesite=none; secure";
     //const cookie = "user=hussein;";
 
     res.setHeader("set-cookie", [cookie])
