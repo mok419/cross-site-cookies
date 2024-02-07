@@ -25,7 +25,7 @@ app.post("/", (req,res) =>{
 app.post("/login", (req, res) => {
     //const cookie = "user=hussein; samesite=strict; secure";
     //const cookie = "user=hussein; samesite=lax; secure";
-    const cookie = "user=hussein; domain=https://express-cross-site-cookie.onrender.com; samesite=none; secure";
+    const cookie = "user=hussein; domain=express-cross-site-cookie.onrender.com; samesite=none; secure";
     //const cookie = "user=hussein;";
 
     res.setHeader("set-cookie", [cookie])
