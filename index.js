@@ -1,5 +1,16 @@
 const app = require("express")()
 
+var allowlist = ['https://express-cross-site-cookie.onrender.com', 'https://mok419.github.io']
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (allowlist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false } // disable CORS for this request
+  }
+  callback(null, corsOptions) // callback expects two parameters: error and options
+}
+
 app.post("/", (req,res) =>{
 
     const cookie = req.headers.cookie;
